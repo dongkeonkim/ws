@@ -16,22 +16,24 @@
 
     <div class="menu">
         <div>
-            <span class="rf10">
+            <span class="mr10">
                 <label id="blankCnt"></label> 글자 (공백 포함)
             </span>
         </div>
         <div>
-            <span class="rf10">
+            <span class="mr10">
                 <label id="nonBlankCnt"></label> 글자 (공백 제외)
             </span>
         </div>
         <div>
-            <span class="rf10">단어 수:</span>
-            <label id="wordCnt" />
+            <span class="mr10">
+                <label id="wordCnt"></label> 단어
+            </span>
         </div>
         <div>
-            <span class="rf10">줄 수:</span>
-            <label id="rowCnt" />
+            <span class="mr10">
+                <label id="rowCnt"></label> 줄
+            </span>
         </div>
         <div class="rButton">
             <div class="select">
@@ -50,11 +52,10 @@
                 </ul>
             </div>
             <div>
-                <button class="btn1 tf10" type="button" onclick="getTextTrim()">정돈하기</button>
+                <button class="btn1 mt10" type="button" onclick="getTextTrim()">정돈하기</button>
                 <br />
-                <button class="btn1 tf10" type="button" onclick="getTextTrim()">임시저장</button>
-                <br />
-                <button class="btn1 tf10" type="button" onclick="getTextTrim()">원래대로 돌아가기</button>
+                <button class="btn2 mt10 mr5" type="button" onclick="setTempText()">임시저장</button>
+                <button class="btn2 mt10" type="button" onclick="getTempText()">되돌리기</button>
             </div>
         </div>
     </div>

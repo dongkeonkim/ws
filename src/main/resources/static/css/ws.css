@@ -24,7 +24,21 @@ ul {
     display: inline-block;
     cursor: pointer;
     width: 188px;
-    height: 30px;
+    height: 31px;
+    border: 1px solid #333;
+    line-height: 24px;
+    text-align: center;
+    font-weight:bold;
+    font-size:13px;
+    background-color: #333;
+    color: #fff;
+}
+
+.btn2 {
+    display: inline-block;
+    cursor: pointer;
+    width: 90px;
+    height: 31px;
     border: 1px solid #333;
     line-height: 24px;
     text-align: center;
@@ -70,32 +84,29 @@ ul {
     margin-left: 40px;
 }
 
-.rf10 {
+.mr10 {
     margin-right: 10px;
 }
 
-.lf10 {
+.ml10 {
     margin-left: 10px;
 }
 
-.tf10 {
+.mt10 {
     margin-top: 10px;
+}
+
+.mr5 {
+    margin-right: 5px;
 }
 
 .rButton > div {
     padding-top: 5px;
 }
 
-/*
-.select > div {
-    margin-top: 10px;
-}
-*/
-
 .select input[type=radio]{
     display: none;
 }
-
 .select input[type=radio]+label{
     display: inline-block;
     cursor: pointer;
@@ -115,15 +126,12 @@ ul {
     background-color: #333;
     color: #fff;
 }
-
 .custom {
     /* padding: 5px 10px; */
 }
-
 .custom input[type=checkbox]{
     display: none;
 }
-
 .custom input[type=checkbox]+label{
     display: inline-block;
     cursor: pointer;
@@ -143,7 +151,6 @@ ul {
     background-color: #333;
     color: #fff;
 }
-
 .switch-button {
         position: relative;
         display: inline-block;
