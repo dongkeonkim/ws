@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/ws.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+    <script src="../js/ws.js"></script>
+    <title>Text Counter & Supporter</title>
+</head>
+<body>
+<div class="container">
+    <div id="wsTextArea">
+        <textarea id="inputText" oninput="getTextCnt(this)" placeholder="↪"></textarea>
+    </div>
+
+    <div class="menu">
+        <div>
+            <span class="rf10">
+                <label id="blankCnt"></label> 글자 (공백 포함)
+            </span>
+        </div>
+        <div>
+            <span class="rf10">
+                <label id="nonBlankCnt"></label> 글자 (공백 제외)
+            </span>
+        </div>
+        <div>
+            <span class="rf10">단어 수:</span>
+            <label id="wordCnt" />
+        </div>
+        <div>
+            <span class="rf10">줄 수:</span>
+            <label id="rowCnt" />
+        </div>
+        <div class="rButton">
+            <div class="select">
+                <input type="radio" id="select" name="areaSize" value="N" onclick="getTextAreaSize()" checked><label for="select">기본</label>
+                <input type="radio" id="select2" name="areaSize" value="Y" onclick="getTextAreaSize()"><label for="select2">와이드</label>
+            </div>
+            <div class="custom">
+                <input type="checkbox" id="custom" onclick="showCustomMenu(this)"><label for="custom">세부설정</label>
+            </div>
+            <div id="trimMenu" style="display:none">
+                <ul>
+                    <li>
+                        <input type="checkbox" id="a2" name="trimType" />
+                        <label for="a2"><span>정돈시 줄바꿈 제거</span></label>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <button class="btn1 tf10" type="button" onclick="getTextTrim()">정돈하기</button>
+                <br />
+                <button class="btn1 tf10" type="button" onclick="getTextTrim()">임시저장</button>
+                <br />
+                <button class="btn1 tf10" type="button" onclick="getTextTrim()">원래대로 돌아가기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<label class="switch-button">-->
+<!--    <input type="checkbox"/>-->
+<!--    <span class="onoff-switch"></span>-->
+<!--</label>-->
+
+</body>
+</html>
