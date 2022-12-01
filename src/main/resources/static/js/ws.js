@@ -1,19 +1,22 @@
 'use strict';
 
+var tempText = '';
+
 /*
     TODO: HEADER/FOOTER 제작
     TODO: 다크모드 제작
     TODO: 모바일 모드 제작
+    TODO: alert 만들기
     ---------------------------------
     TODO: 한글 영어 다른 언어 등 변경 기능
 */
 
 // 글자 수 출력
-function getTextCnt(e) {
-    document.getElementById('blankCnt').innerText = e.value.length.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    document.getElementById('nonBlankCnt').innerText = e.value.replace(/\s+/gm, '').length.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    document.getElementById('wordCnt').innerText = (e.value.split(/[^\s.*\s$]+/gm).length - 1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    document.getElementById('rowCnt').innerText = (e.value.split('\n').length - 1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+function getTextCnt(value) {
+    document.getElementById('blankCnt').innerText = value.length.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    document.getElementById('nonBlankCnt').innerText = value.replace(/\s+/gm, '').length.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    document.getElementById('wordCnt').innerText = (value.split(/[^\s.*\s$]+/gm).length - 1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    document.getElementById('rowCnt').innerText = (value.split('\n').length - 1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 // 입력 화면 넓이 조절
@@ -56,7 +59,19 @@ function getTextTrim() {
         text.value = temp.replace(/\r|\n|\r\n/gm, ' ');
     }
 
-    getTextCnt(text);
+    getTextCnt(text.value);
+}
+
+// 임시저장 버튼 클릭
+function setTempText() {
+    var text = document.getElementById('inputText');
+    tempText = text.value;
+}
+
+// 되돌리기 버튼 클릭
+function getTempText() {
+    document.getElementById('inputText').value = tempText;
+    getTextCnt(tempText);
 }
 
 // 나가기, 새로고침 요청시
