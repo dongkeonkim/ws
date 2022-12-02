@@ -1,70 +1,48 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="../css/ws.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="../js/ws.js"></script>
-    <title>Text Counter & Supporter</title>
+    <title>글자수 측정기</title>
 </head>
 <body>
-<div class="container">
-    <div id="wsTextArea">
-        <textarea id="inputText" oninput="getTextCnt(this.value)" placeholder="↪"></textarea>
-    </div>
-
-    <div class="menu">
-        <div>
-            <span class="mr10">
-                <label id="blankCnt"></label> 글자 (공백 포함)
-            </span>
+    <header>
+        <p>글자수 측정기</p>
+        <span>글자 수를 측정하고 정돈하기로 문장을 정리하세요!</span>
+    </header>
+    <div class="ws_menu item_flex">
+        <div class="ws_menu_item">
+            글자(공백 포함)
+            <br />
+            <label id="blanc_cnt">0</label>
         </div>
-        <div>
-            <span class="mr10">
-                <label id="nonBlankCnt"></label> 글자 (공백 제외)
-            </span>
+        <div class="ws_menu_item">
+            글자(공백 제외)
+            <br />
+            <label id="non_blanc_cnt">0</label>
         </div>
-        <div>
-            <span class="mr10">
-                <label id="wordCnt"></label> 단어
-            </span>
+        <div class="ws_menu_item">
+            단어
+            <br />
+            <label id="word_cnt">0</label>
         </div>
-        <div>
-            <span class="mr10">
-                <label id="rowCnt"></label> 줄
-            </span>
-        </div>
-        <div class="rButton">
-            <div class="select">
-                <input type="radio" id="select" name="areaSize" value="N" onclick="getTextAreaSize()" checked><label for="select">기본</label>
-                <input type="radio" id="select2" name="areaSize" value="Y" onclick="getTextAreaSize()"><label for="select2">와이드</label>
-            </div>
-            <div class="custom">
-                <input type="checkbox" id="custom" onclick="showCustomMenu(this)"><label for="custom">세부설정</label>
-            </div>
-            <div id="trimMenu" style="display:none">
-                <ul>
-                    <li>
-                        <input type="checkbox" id="a2" name="trimType" />
-                        <label for="a2"><span>정돈시 줄바꿈 제거</span></label>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <button class="btn1 mt10" type="button" onclick="getTextTrim()">정돈하기</button>
-                <br />
-                <button class="btn2 mt10 mr5" type="button" onclick="setTempText()">임시저장</button>
-                <button class="btn2 mt10" type="button" onclick="getTempText()">되돌리기</button>
-            </div>
+        <div class="ws_menu_item">
+            줄
+            <br />
+            <label id="row_cnt">0</label>
         </div>
     </div>
-</div>
-
-<!--<label class="switch-button">-->
-<!--    <input type="checkbox"/>-->
-<!--    <span class="onoff-switch"></span>-->
-<!--</label>-->
-
+    <textarea id="input_text" oninput="getTextCnt(this.value)" placeholder="↪"></textarea>
+    <div class="ws_menu">
+        <div class="ws_menu_item">
+            <button class="btn1" type="button" onclick="getTextTrim()">정돈하기</button>
+            <br />
+            <button class="btn2" type="button" onclick="setTempText()">임시저장</button>
+            <button class="btn2" style="margin-left: 1px" onclick="getTempText()" type="button">되돌리기</button>
+        </div>
+        <footer></footer>
+    </div>
 </body>
 </html>

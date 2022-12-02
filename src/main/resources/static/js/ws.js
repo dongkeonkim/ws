@@ -1,76 +1,45 @@
 'use strict';
 
-var tempText = '';
-
-/*
-    TODO: HEADER/FOOTER 제작
-    TODO: 다크모드 제작
-    TODO: 모바일 모드 제작
-    TODO: alert 만들기
-    ---------------------------------
-    TODO: 한글 영어 다른 언어 등 변경 기능
-*/
+let tempText = '';
+const limitLength = 1000;
 
 // 글자 수 출력
-function getTextCnt(value) {
-    document.getElementById('blankCnt').innerText = value.length.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    document.getElementById('nonBlankCnt').innerText = value.replace(/\s+/gm, '').length.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    document.getElementById('wordCnt').innerText = (value.split(/[^\s.*\s$]+/gm).length - 1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    document.getElementById('rowCnt').innerText = (value.split('\n').length - 1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
-// 입력 화면 넓이 조절
-function getTextAreaSize() {
-    let size = document.getElementsByName('areaSize');
-    let areaSize = size[0].checked ? size[0].value : size[1].value;
-
-    if (areaSize == 'Y') {
-        document.getElementById('wsTextArea').style.width = '42%';
+function getTextCnt (value) {
+    if (value.length < limitLength) {
+        document.getElementById('blanc_cnt').innerText = value.length.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        document.getElementById('non_blanc_cnt').innerText = value.replace(/\s+/gm, '').length.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        document.getElementById('word_cnt').innerText = (value.split(/[^\s.*\s$]+/gm).length - 1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        document.getElementById('row_cnt').innerText = (value.split('\n').length - 1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     } else {
-        document.getElementById('wsTextArea').style.width = '30%';
+        alert('더 이상 입력할 수 없습니다.\n제한 글자 수: 5,000,000자');
+        document.getElementById('input_text').value = document.getElementById('input_text').value.substr(0, limitLength - 1);
     }
-}
-
-// 커스텀 메뉴 UI 활성화
-function showCustomMenu(val) {
-    let custom = document.getElementById('trimMenu');
-    custom.style.display = val.checked ? '' : 'none';
 }
 
 // 문장 정돈하기 버튼 클릭
 function getTextTrim() {
-    var text = document.getElementById('inputText');
-    var temp = text.value;
-
-    // 커스텀
-    var type = document.getElementsByName('trimType');
-    var textType = type[0].checked ? 'Y' : 'N';
+    let text = document.getElementById('input_text');
+    let temp = text.value;
 
     temp = temp.replace(/^\s+/gm, '');	        // 앞 공백 제거
     temp = temp.replace(/\s+$/gm, '');	        // 뒤 공백 제거
     temp = temp.replace(/\s{2,}/gm, ' ');       // 공백 두 개 이상 > 하나로 변환
     temp = temp.replace(/\.\.\./gm, '⋯');       // '...'을 특수문자 '⋯'로 변환
-
-    if (textType == 'N') {
-        temp = temp.replace(/\r|\n|\r\n/gm, '\n ');
-
-        text.value = ' ' + temp;
-    } else {
-        text.value = temp.replace(/\r|\n|\r\n/gm, ' ');
-    }
+    temp = temp.replace(/\r|\n|\r\n/gm, '\n '); // 띄어쓰기 시 한칸 띄우기
+    text.value = ' ' + temp;                    // 맨 앞줄 한칸 띄우기
 
     getTextCnt(text.value);
 }
 
 // 임시저장 버튼 클릭
 function setTempText() {
-    var text = document.getElementById('inputText');
+    let text = document.getElementById('input_text');
     tempText = text.value;
 }
 
 // 되돌리기 버튼 클릭
 function getTempText() {
-    document.getElementById('inputText').value = tempText;
+    document.getElementById('input_text').value = tempText;
     getTextCnt(tempText);
 }
 
@@ -78,7 +47,5 @@ function getTempText() {
 window.addEventListener('beforeunload', (e) => {
     e.preventDefault();
     e.returnValue = '';
-
-    console.log('데이터 전송');
 });
 
