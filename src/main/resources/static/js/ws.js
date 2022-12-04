@@ -1,7 +1,7 @@
 'use strict';
 
 let tempText = '';
-const limitLength = 1000;
+const limitLength = 5000000;
 
 // 글자 수 출력
 function getTextCnt (value) {
@@ -45,7 +45,9 @@ function getTempText() {
 
 // 나가기, 새로고침 요청시
 window.addEventListener('beforeunload', (e) => {
-    e.preventDefault();
-    e.returnValue = '';
+    if(document.getElementById('input_text').value.length > 0){
+        e.preventDefault();
+        e.returnValue = '';
+    }
 });
 
