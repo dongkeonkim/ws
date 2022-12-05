@@ -50,4 +50,3 @@ window.addEventListener('beforeunload', (e) => {
         e.returnValue = '';
     }
 });
-

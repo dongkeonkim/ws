@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="google-site-verification" content="cRd1ObUXUS957BSxXaINJgTRrETdG6t_Uqecy2REhnI" />
     <meta name="naver-site-verification" content="0530ce6de2c5883361910ff9ca0f099da55403d3" />
+    <meta name="viewport" content="width=device-width, inital-scale=1">
     <link rel="stylesheet" type="text/css" href="../css/ws.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="../js/ws.js"></script>
@@ -41,8 +42,8 @@
         <div class="ws_menu_item">
             <button class="btn1" type="button" onclick="getTextTrim()">정돈하기</button>
             <br />
-            <button class="btn2" type="button" onclick="setTempText()">임시저장</button>
-            <button class="btn2" style="margin-left: 1px" onclick="getTempText()" type="button">되돌리기</button>
+            <button class="btn2" id="b1" type="button" onclick="setTempText()">임시저장</button>
+            <button class="btn2" id="b2" style="margin-left: 1px" onclick="getTempText()" type="button">저장복구</button>
         </div>
         <footer></footer>
     </div>
